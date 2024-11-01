@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+  <title><ui:insert name="title">Default title</ui:insert></title>
+</h:head>
+
+ 	<h:body>
+ 	<h:panelGroup style="display: flex; justify-content: center;">
+        <h:form style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        	<h:outputLabel for="numberPages" value="Tamanho do Array:" />
+            <p:inputNumber value="#{mainBean.numberPages}" style="width: 100%;" />
+            <p:commandButton actionListener="#{mainBean.run}" value="Testar" update="grafico" />
+        </h:form>
+    </h:panelGroup>
+
+    <h:panelGroup style="display: flex; justify-content: center; margin-top: 20px;">
+        <f:event type="preRenderView" listener="#{mainBean.run}" />
+        <p:chart id="grafico" type="bar" model="#{mainBean.model}" style="width: 80%;" />
+    </h:panelGroup>
+    </h:body>
+
+</html>
